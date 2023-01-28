@@ -1,0 +1,55 @@
+﻿@model ScholarHat.Models.Entities.Employee
+
+@{
+    ViewData["Title"] = "SubmitEmloyee";
+}
+<h1>Submit Article</h1>
+<h3 class="bg-info text-white">
+    @TempData["Message"]
+</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SubmitArticle">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartmentId" class="control-label"></label>
+                <input asp-for="DepartmentId" class="form-control" />
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <textarea rows="5" cols="20" asp-for="Address" class="form-control"></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="EmployeeID" class="control-label"></label>
+
+                @Html.DropDownList("EmployeeID")
+                <span asp-validation-for="EmployeeID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
