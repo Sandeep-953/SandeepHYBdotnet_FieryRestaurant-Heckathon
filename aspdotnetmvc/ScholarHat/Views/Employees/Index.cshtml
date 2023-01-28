@@ -1,0 +1,37 @@
+﻿@model List<ScholarHat.Models.Entities.Employee>
+<h1 class="d-inline-block">manage Employee</h1>
+<hr />
+
+<a asp-action="Create" asp-controller="Employee" class="btn btn-warning p-3">Create New Employee</a>
+<form asp-action="Index">
+    <input type="text" name="searchText" placeholder="Enter text to search" />
+    <input type="submit" name="btnSubmit" value="Search" class="btn btn-dark" />
+</form>
+<h4>@TempData["message"]</h4>
+<table class="table table-bordered table-light">
+    <tr>
+        <th>Employee ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Department Id</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EmployeeID</td>
+                <td>@item.Name</td>
+                <td>@item.Address</td>
+                <td>@item.DepartmentId</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Employee" asp-asp-route="@item.EmployeeID" class="btn btn-check"></a>
+                </td>
+                    <td>
+                    <a asp-action="Edit" asp-controller="Employee" asp-asp-route="@item.EmployeeID" class="btn btn-check"></a>
+                    </td>
+            </tr>
+        }
+    </tbody>
+</table>
